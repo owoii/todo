@@ -26,11 +26,14 @@ function IconWrapper({ children, onClick }: { children: React.ReactNode, onClick
 export default function Todo({ task, toggleComplete, deleteTodo, editTodo }: Props) {
   return (
     <div className='select-none flex hover:bg-blue-500 justify-between shadow-lg transition-all items-center bg-blue-600 py-2 px-4 rounded-xl'>
-      <p
-        onClick={() => toggleComplete(task.id)}
-        className={task.completed ? 'decoration-blue-400 line-through text-blue-400' : ''}>
-        {task.task}</p>
-      <div className='flex items-center'>
+      <div className='break-all'>
+        <p
+          onClick={() => toggleComplete(task.id)}
+          className={task.completed ? 'decoration-blue-400 line-through text-blue-400' : ''}>
+          {task.task}
+        </p>
+      </div>
+      <div className='flex items-center flex-shrink-0'>
         <IconWrapper onClick={() => editTodo(task.id)}>
           <FiEdit />
         </IconWrapper>

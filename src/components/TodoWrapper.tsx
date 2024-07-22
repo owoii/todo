@@ -35,7 +35,7 @@ interface TodoOptionProps {
 function TodoOption({ exportData, importData, resetTodo }: TodoOptionProps) {
 
   return (
-    <div className="flex py-6 w-96 items-center px-6 justify-between rounded-2xl mt-4 bg-blue-900  left-0">
+    <div className="flex py-6 w-full md:w-96 items-center px-6 justify-between rounded-2xl mt-4 bg-blue-900  left-0">
       <IconButton label="导出" onClick={exportData}>
         <FiShare className="w-6 h-6" />
       </IconButton>
@@ -152,11 +152,11 @@ export default function TodoWrapper() {
   }
 
   return (
-    <div className="relative flex flex-col">
-      <div className="transition-all w-96  pt-6 px-4 bg-blue-950 rounded-xl">
+    <div className="relative flex flex-col w-full h-full md:w-auto md:h-auto">
+      <div className="transition-all w-full md:w-96 pt-6 px-4 bg-blue-950 md:rounded-xl">
         <TodoHearder />
         <TodoForm addTodo={addTodo} />
-        <div className="transition-all h-64 my-4 overflow-y-scroll flex flex-col gap-4 py-4">
+        <div className="transition-all h-64 my-4 overflow-y-auto scrollbar-none flex flex-col gap-4 py-4 ">
           {todos.map((todo, index) => (
             todo.isEditing ?
               (<EditTodoForm key={index} updateTodo={updateTodo} task={todo} />) :
