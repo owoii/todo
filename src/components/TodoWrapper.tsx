@@ -3,12 +3,14 @@ import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from 'uuid'
 import Todo, { type TodoData } from "./Todo";
 import { BsFillClipboard2CheckFill } from 'react-icons/bs'
-import { FiShare, FiDownload, FiXOctagon } from 'react-icons/fi'
+import { FiShare, FiDownload, FiXOctagon,FiCircle } from 'react-icons/fi'
 import EditTodoForm from "./EditTodoForm";
 import clipboard from 'clipboard'
+
+/** Todo 头部 */
 function TodoHearder() {
   return (
-    <div className="text-center  select-none cursor-pointer text-lg mb-4 hover:bg-blue-900 rounded-md py-2 text-gray-200 items-center flex justify-center gap-2">
+    <div className="text-center select-none cursor-pointer text-lg mb-4 hover:bg-blue-900 rounded-md p-2 text-gray-200 items-center flex justify-start gap-2 flex-shrink-0">
       <BsFillClipboard2CheckFill />
       <h1>任务清单</h1>
     </div>
@@ -35,7 +37,7 @@ interface TodoOptionProps {
 function TodoOption({ exportData, importData, resetTodo }: TodoOptionProps) {
 
   return (
-    <div className="flex py-6 w-96 items-center px-6 justify-between rounded-2xl mt-4 bg-blue-900  left-0">
+    <div className="flex flex-shrink-0 py-6 w-full md:backdrop-blur-none md:w-96 items-center px-6 justify-between  md:rounded-t-2xl md:rounded-2xl md:mt-4  md:bg-blue-900  left-0">
       <IconButton label="导出" onClick={exportData}>
         <FiShare className="w-6 h-6" />
       </IconButton>
@@ -152,11 +154,13 @@ export default function TodoWrapper() {
   }
 
   return (
-    <div className="relative flex flex-col">
-      <div className="transition-all w-96  pt-6 px-4 bg-blue-950 rounded-xl">
-        <TodoHearder />
-        <TodoForm addTodo={addTodo} />
-        <div className="transition-all h-64 my-4 overflow-y-scroll flex flex-col gap-4 py-4">
+    <div className="flex flex-col md:flex-none w-full h-full md:w-max md:h-auto">
+      <div className="transition-all w-full md:w-96 bg-blue-950 md:rounded-xl  overflow-x-hidden scrollbar-none rounded-b-3xl flex flex-col">
+        <nav className="sticky top-0 left-0 py-6 bg-blue-950 px-4 flex-shrink-0">
+          <TodoHearder />
+          <TodoForm addTodo={addTodo} />
+        </nav>
+        <div className="transition-all h-full md:max-h-64 overflow-y-auto scrollbar-none flex flex-col gap-4 px-4 flex-1">
           {todos.map((todo, index) => (
             todo.isEditing ?
               (<EditTodoForm key={index} updateTodo={updateTodo} task={todo} />) :
@@ -166,9 +170,17 @@ export default function TodoWrapper() {
                 deleteTodo={deleteTodo}
                 editTodo={editTodo} />)
           ))}
+          {
+            todos.length < 1 && (
+              
+              <div className="flex justify-center items-center text-blue-500 py-2 flex-col gap-4">
+                <FiCircle size={48}/>
+                <span>空空如也</span>
+              </div>
+            )
+          }
         </div>
-        <p className="text-blue-600 pb-8 text-center text-sm">® Create By React</p>
-
+        <p className="flex-shrink-0 text-blue-600 py-4 text-center text-sm ">® Create By owocc</p>
       </div>
       <TodoOption exportData={exportData} importData={importData} resetTodo={resetTodo} />
     </div>
