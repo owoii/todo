@@ -1,0 +1,29 @@
+{
+    "name": "Todo",
+    "short_name": "TODO",
+    "lang": "zh-CN",
+    "version": "0.0.1",
+    "theme_color": "#172554",
+    "background_color": "#172554",
+    "description": "一个简单到简单到简单的 TODO 程序",
+    "manifest_version": 3,
+    "display": "standalone",
+    "display_override": [
+        "window-controls-overlay"
+    ],
+    "icons": [
+        {
+            "src": "icons/logo-128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "./screen/todo.png",
+            "sizes": "1488x947",
+            "platform": "wide",
+            "label": "Todo"
+        }
+    ]
+}

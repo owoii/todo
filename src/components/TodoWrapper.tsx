@@ -154,8 +154,8 @@ export default function TodoWrapper() {
   }
 
   return (
-    <div className="flex flex-col md:flex-none w-full h-full md:w-max md:h-auto">
-      <div className="transition-all w-full md:w-96 bg-blue-950 md:rounded-xl  overflow-x-hidden scrollbar-none rounded-b-3xl flex flex-col">
+    <div className="flex flex-col md:flex-none w-full h-full md:w-max md:h-auto justify-between">
+      <div className="transition-all w-full md:w-96 bg-blue-950 md:rounded-xl overflow-x-hidden scrollbar-none rounded-b-3xl flex flex-col">
         <nav className="sticky top-0 left-0 py-6 bg-blue-950 px-4 flex-shrink-0">
           <TodoHearder />
           <TodoForm addTodo={addTodo} />
