@@ -38,7 +38,7 @@ export default function EditTodoForm({ task, updateTodo }: Props) {
     <form onSubmit={handleUpdateTodo} className="w-full flex-col flex relative rounded-xl bg-blue-800 focus-within:bg-blue-700 transition-all group shadow-lg p-4">
       <textarea
         className='bg-transparent placeholder:text-gray-300 flex-1 outline-none scrollbar-none w-full resize-none'
-        rows={4}
+        rows={10}
         maxLength={maxLength}
         placeholder='随机应变'
         value={value}
